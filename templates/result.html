@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>OCR</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}"/>
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/noscript.css') }}"/>
+    </noscript>
+</head>
+<body class="is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Panel (Banner) -->
+        <section class="panel banner right">
+            <div class="content color0 span-3-75">
+                <h1 class="major">识别结果</h1>
+                <p>部分未正确识别数字需要手动输入</p>
+                <ul class="actions">
+                    <li><a href="#first" class="button primary color1 circle icon fa-angle-right">Next</a></li>
+                </ul>
+            </div>
+            <div class="image filtered span-1-75" data-position="25% 25%">
+                <img src="{{ url_for('static',filename='images/pic01.jpg') }}" alt=""/>
+            </div>
+        </section>
+        <!-- Panel -->
+        <section class="panel color2-alt" id="first">
+            <div class="inner columns aligned">
+                <div class="span-3">
+                    <div class="table-wrapper">
+                        <table class="alt">
+                            <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>结果</th>
+                                <th>单位</th>
+                                <th>参考区间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>白细胞计数(WBC)</td>
+                                {% if result[0].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[0]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[0] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>4~10</td>
+                            </tr>
+                            <tr>
+                                <td>红细胞计数(RBC)</td>
+                                {% if result[1].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[1]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[1] }}</td>
+                                {% endif %}
+                                <td>10^12/L</td>
+                                <td>3.5~5.0</td>
+                            </tr>
+                            <tr>
+                                <td>血红蛋白(HGB)</td>
+                                {% if result[2].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[2]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[2] }}</td>
+                                {% endif %}
+                                <td>g/L</td>
+                                <td>110~150</td>
+                            </tr>
+                            <tr>
+                                <td>红细胞压积(HCT)</td>
+                                {% if result[3].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[3]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[3] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>35~45</td>
+                            </tr>
+                            <tr>
+                                <td>血小板计数(PLT)</td>
+                                {% if result[4].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[4]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[4] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>100~300</td>
+                            </tr>
+                            <tr>
+                                <td>平均红细胞体积(MCV)</td>
+                                {% if result[5].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[5]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[5] }}</td>
+                                {% endif %}
+                                <td>fL</td>
+                                <td>82~95</td>
+                            </tr>
+                            <tr>
+                                <td>平均RBC血红蛋白含量(MCH)</td>
+                                {% if result[6].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[6]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[6] }}</td>
+                                {% endif %}
+                                <td>pg</td>
+                                <td>27~31</td>
+                            </tr>
+                            <tr>
+                                <td>平均RBC血红蛋白浓度(MCH)</td>
+                                {% if result[7].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[7]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[7] }}</td>
+                                {% endif %}
+                                <td>g/L</td>
+                                <td>320~360</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Panel -->
+        <section class="panel color2-alt">
+            <div class="inner columns aligned">
+                <div class="span-3">
+                    <div class="table-wrapper">
+                        <table class="alt">
+                            <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>结果</th>
+                                <th>单位</th>
+                                <th>参考区间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>红细胞分布宽度(SD)</td>
+                                {% if result[8].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[8]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[8] }}</td>
+                                {% endif %}
+                                <td>fL</td>
+                                <td>39~46</td>
+                            </tr>
+                            <tr>
+                                <td>红细胞分布宽度(CV)</td>
+                                {% if result[9].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[9]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[9] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>11.5~15</td>
+                            </tr>
+                            <tr>
+                                <td>中性粒细胞数(NE#)</td>
+                                {% if result[10].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[10]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[10] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>2.0~7.0</td>
+                            </tr>
+                            <tr>
+                                <td>中性粒细胞比率(NE%)</td>
+                                {% if result[11].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[11]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[11] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>50~70</td>
+                            </tr>
+                            <tr>
+                                <td>淋巴细胞数(LYM#)</td>
+                                {% if result[12].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[12]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[12] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>1.18~3.74</td>
+                            </tr>
+                            <tr>
+                                <td>淋巴细胞比率(LYM%)</td>
+                                {% if result[13].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[13]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[13] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>20~40</td>
+                            </tr>
+                            <tr>
+                                <td>单核细胞数(MON#)</td>
+                                {% if result[14].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[14]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[14] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>0.2~1.0</td>
+                            </tr>
+                            <tr>
+                                <td>单核细胞比率(MON%)</td>
+                                {% if result[15].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[15]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[15] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>3~10</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Panel -->
+        <section class="panel color2-alt">
+            <div class="inner columns aligned">
+                <div class="span-3">
+
+                    <div class="table-wrapper">
+                        <table class="alt">
+                            <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>结果</th>
+                                <th>单位</th>
+                                <th>参考区间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>嗜酸性粒细胞数(EO#)</td>
+                                {% if result[16].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[16]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[16] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>0.05~0.3</td>
+                            </tr>
+                            <tr>
+                                <td>嗜酸性粒细胞比率(EO%)</td>
+                                {% if result[17].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[17]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[17] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>1～6</td>
+                            </tr>
+                            <tr>
+                                <td>嗜酸性粒细胞数(BA#)</td>
+                                {% if result[18].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[18]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[18] }}</td>
+                                {% endif %}
+                                <td>10^9/L</td>
+                                <td>0.01~0.08</td>
+                            </tr>
+                            <tr>
+                                <td>嗜酸性粒细胞比率(BA%)</td>
+                                {% if result[19].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[19]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[19] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>0.1~1.2</td>
+                            </tr>
+                            <tr>
+                                <td>大型血小板比率(P-LCR)</td>
+                               {% if result[20].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[20]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[20] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>13~43</td>
+                            </tr>
+                            <tr>
+                                <td>平均血小板体积(MPV)</td>
+                                {% if result[21].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[21]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[21] }}</td>
+                                {% endif %}
+                                <td>fL</td>
+                                <td>7.6~13.2</td>
+                            </tr>
+                            <tr>
+                                <td>血小板体积分布宽度(PDW)</td>
+                                {% if result[22].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[22]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[22] }}</td>
+                                {% endif %}
+                                <td>%</td>
+                                <td>9~18.1</td>
+                            </tr>
+                            <tr>
+                                <td>血小板体积(PCT)</td>
+                                {% if result[23].endswith(".png") %}
+                                    <td><img src="{{ url_for('static',filename='images/'+result[23]) }}"/></td>
+                                {% else %}
+                                    <td>{{ result[23] }}</td>
+                                {% endif %}
+                                <td></td>
+                                <td>0.16~0.4</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Copyright -->
+        <div class="copyright">&copy; OCR_LQBZ. Design: <a href="https://github.com/lincvic">LQBZ</a>.</div>
+
+    </div>
+
+</div>
+<!-- Scripts -->
+<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+
+</body>
+</html>
